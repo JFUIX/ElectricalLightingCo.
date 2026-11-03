@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Electrical Lighting Co. – Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6f8;--sf:#fff;--ink:#14202e;--mut:#5b6676;--line:#dde2e8;--brass:#c98a2b;--hero:#2c3e5c;--k:#ffcf7a}
+@media (prefers-color-scheme:dark){:root{--bg:#0b121b;--sf:#121c28;--ink:#eef1f5;--mut:#9aa6b6;--line:#243142}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Instrument Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0)}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button{font-family:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.02em;margin:0}
+.ann{background:var(--ink);color:var(--bg);font-size:13px;text-align:center;padding:7px 12px;padding-top:calc(7px + env(safe-area-inset-top,0px))}
+.ann span{margin:0 12px;white-space:nowrap}
+header{background:var(--sf);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.top{display:flex;align-items:center;gap:18px;max-width:1280px;margin:auto;padding:12px 20px}
+.logo{font:700 19px/1.1 "Bricolage Grotesque",sans-serif;display:flex;gap:10px;align-items:center;white-space:nowrap}
+.logo i{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#ffe2a8,var(--brass));box-shadow:0 0 16px #ffe2a8}
+.search{flex:1;max-width:560px;display:flex;border:1.5px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg)}
+.search input{flex:1;min-width:0;border:0;background:none;padding:10px 16px;font:inherit;color:var(--ink)}
+.search button{border:0;background:var(--brass);color:#fff;font-weight:600;padding:0 18px;cursor:pointer}
+.ic{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:14px;font-weight:500}
+.bk{border:0;background:var(--ink);color:var(--bg);border-radius:99px;padding:9px 16px;font-weight:600;cursor:pointer}
+nav{border-top:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+nav ul{list-style:none;margin:auto;padding:0 14px;max-width:1280px;display:flex;white-space:nowrap}
+nav a{display:block;padding:11px 12px;font-size:14.5px;font-weight:500}
+nav a:hover,nav .of{color:var(--brass)}
+.hero{position:relative;background:var(--hero);color:#fff;overflow:hidden;min-height:min(620px,86vh)}
+.room{position:absolute;inset:0;background:radial-gradient(70% 90% at 72% 20%,color-mix(in srgb,var(--k) 38%,transparent),transparent 70%);opacity:0;transition:opacity .9s}
+.hero.on .room{opacity:var(--lum,1)}
+.hero.flick .room{animation:fl .9s steps(1) 1}
+@keyframes fl{0%{opacity:0}12%{opacity:.9}20%{opacity:.1}34%{opacity:1}44%{opacity:.25}60%{opacity:1}100%{opacity:1}}
+.slides{display:flex;transition:transform .8s cubic-bezier(.65,0,.25,1);position:relative}
+.sl{min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;max-width:1280px;margin:auto;padding:50px 76px 80px;min-height:min(620px,86vh)}
+.cp h2{font-size:clamp(34px,5vw,60px);line-height:1.04;margin-bottom:16px}
+.cp p{color:#c5cfdb;font-size:18px;max-width:42ch;margin:0 0 26px}
+.cta{display:inline-block;background:var(--k);color:#14202e;font-weight:600;padding:14px 26px;border-radius:99px;transition:box-shadow .25s,transform .25s}
+.cta:hover{box-shadow:0 0 30px var(--k);transform:translateY(-2px)}
+.fx{display:flex;justify-content:center;position:relative;padding-top:70px}
+.cord{position:absolute;top:-60px;left:50%;width:2px;height:120px;background:#8a97a8;transform-origin:top;animation:sw 6s ease-in-out infinite}
+.cord b{position:absolute;bottom:-26px;left:-11px;width:24px;height:30px;border-radius:50% 50% 45% 45%;background:var(--k);box-shadow:0 0 40px 14px var(--k);opacity:.25;transition:opacity .6s}
+.hero.on .cord b{opacity:1}
+@keyframes sw{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.plate{width:min(330px,80%);aspect-ratio:1;border-radius:22px;background:#f4f1ec;display:grid;place-items:center;overflow:hidden;box-shadow:0 30px 80px -20px var(--k);opacity:.25;transform:translateY(14px) scale(.97);transition:all .9s}
+.hero.on .plate{opacity:1;transform:none;filter:brightness(calc(.4 + var(--lum,1)*.6))}
+.plate img{width:92%;height:92%;object-fit:contain}
+.kel{position:absolute;left:76px;bottom:26px;font-size:13px;color:#c5cfdb;display:flex;align-items:center;gap:10px;z-index:3}
+.kel i{width:70px;height:6px;border-radius:9px;background:linear-gradient(90deg,#ff9d3a,#ffe2a8,#fff,#bfe2ff)}
+.kel u{text-decoration:none;color:var(--k);font-weight:600}
+.sw{position:absolute;top:16px;right:16px;z-index:6;border:1px solid rgba(255,255,255,.35);background:rgba(12,19,29,.6);color:#fff;border-radius:99px;padding:8px 16px;font-size:13px;cursor:pointer}
+.ar{position:absolute;top:50%;z-index:6;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(12,19,29,.55);color:#fff;font-size:20px;cursor:pointer}
+.pv{left:14px}.nx{right:14px}
+.dots{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:6}
+.dots button{width:10px;height:10px;border-radius:9px;border:0;padding:0;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s,background .3s}
+.dots [aria-current=true]{width:30px;background:var(--k)}
+.hero.on .cord b{opacity:calc(.3 + var(--lum,1)*.7)}
+.lc{position:absolute;right:16px;bottom:16px;z-index:7;display:flex;align-items:center;gap:14px;background:rgba(12,19,29,.72);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:10px 14px;backdrop-filter:blur(8px);color:#fff;font-size:13px}
+.lc label{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.lc input[type=range]{width:130px;accent-color:var(--k);height:28px}
+.tm{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tm button{flex:none;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;border-radius:99px;padding:6px 11px;font-size:12.5px;cursor:pointer}
+.tm button i{width:11px;height:11px;border-radius:50%;background:var(--c,#fff);box-shadow:0 0 8px var(--c,#fff)}
+.tm button[aria-pressed=true]{background:#fff;color:#14202e}
+@media(max-width:860px){.lc{left:12px;right:12px;bottom:38px;flex-direction:column;align-items:stretch;gap:8px}.lc input[type=range]{flex:1;width:auto}.hero .kel{bottom:128px;left:22px}.hero .sl{padding-bottom:170px}.hero .ar{top:22%}}
+.demo{background:var(--brass);color:#fff;text-align:center;font-weight:600;font-size:13px;padding:6px 12px;padding-top:calc(6px + env(safe-area-inset-top,0px))}
+.wm{position:fixed;inset:0;z-index:200;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='200'%3E%3Ctext x='24' y='115' transform='rotate(-25 140 100)' font-family='sans-serif' font-size='30' font-weight='700' fill='rgba(120,120,120,0.2)'%3ESeren J%3C/text%3E%3C/svg%3E")}
+.ph{padding:14px;text-align:center;color:#6b6358;font-size:13px;line-height:1.3}
+.ann{padding-top:7px!important}
+.hero,.trade{background-image:linear-gradient(160deg,#34496d,#2c3e5c 60%,#3a3350)}
+.trust{background:var(--sf);border-bottom:1px solid var(--line)}
+.trust div{max-width:1280px;margin:auto;padding:14px 20px;display:flex;flex-wrap:wrap;gap:8px 34px;justify-content:center;font-size:14px;color:var(--mut)}
+section.w{max-width:1280px;margin:auto;padding:54px 20px 0}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}
+.hd h2{font-size:clamp(26px,3.4vw,38px)}.hd a{color:var(--brass);font-weight:600;font-size:15px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tile{position:relative;border-radius:16px;overflow:hidden;background:#e9e5de;aspect-ratio:4/5;display:flex;align-items:end}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.tile:hover img{transform:scale(1.05)}
+.tile span{position:relative;width:100%;padding:44px 16px 16px;color:#fff;font:700 19px "Bricolage Grotesque",sans-serif;background:linear-gradient(transparent,rgba(10,16,24,.82))}
+.tile.big{grid-column:span 2;aspect-ratio:auto}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pc{background:var(--sf);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pc .im{aspect-ratio:1;background:#f4f1ec;display:grid;place-items:center}
+.pc img{width:88%;height:88%;object-fit:contain}
+.pc .t{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pc h3{font:500 14px/1.35 "Instrument Sans",sans-serif;letter-spacing:0}
+.pc .pr{font:700 20px "Bricolage Grotesque",sans-serif;margin-top:auto}
+.add{margin-top:6px;border:0;border-radius:99px;background:var(--brass);color:#fff;font-weight:600;font-size:14px;padding:10px;cursor:pointer;transition:background .2s}
+.add:hover{background:#a8721f}.add.ok{background:#2e7d4f}
+.guides{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.g{flex:0 0 260px;scroll-snap-align:start;background:var(--sf);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.g img{aspect-ratio:3/2;object-fit:cover;width:100%;background:#e9e5de}
+.g div{padding:14px}.g h3{font-size:18px;margin-bottom:4px}.g p{margin:0;font-size:14px;color:var(--mut)}
+.brands{display:flex;flex-wrap:wrap;gap:10px 26px;font:700 18px "Bricolage Grotesque",sans-serif;color:var(--mut)}
+.trade{margin-top:56px;background:var(--hero);color:#fff;padding:48px 20px;text-align:center}
+.trade h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:10px}.trade p{color:#c5cfdb;margin:0 auto 22px;max-width:52ch}
+footer{padding:26px 20px;text-align:center;font-size:13px;color:var(--mut)}
+.ov{position:fixed;inset:0;background:rgba(5,10,16,.55);opacity:0;pointer-events:none;transition:opacity .3s;z-index:90}
+.ov.o{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--sf);z-index:100;transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0)}
+.dr.o{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:22px}.dh button{border:0;background:none;color:var(--ink);font-size:26px;cursor:pointer}
+.fr{padding:12px 18px;font-size:14px;border-bottom:1px solid var(--line)}
+.bar{height:6px;border-radius:9px;background:var(--line);margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brass);width:0;transition:width .4s}
+.items{flex:1;overflow:auto;padding:6px 18px}
+.it{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.it .th{width:64px;height:64px;background:#f4f1ec;border-radius:8px;display:grid;place-items:center;overflow:hidden}.it img{width:90%;height:90%;object-fit:contain}
+.it h3{font:500 13.5px/1.3 "Instrument Sans",sans-serif;letter-spacing:0}
+.q{display:flex;align-items:center;gap:8px;margin-top:6px}.q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+.it b{font-weight:600}
+.df{padding:16px 18px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.df p{display:flex;justify-content:space-between;margin:0 0 12px;font-weight:600}
+.df .add{width:100%;font-size:16px;padding:14px}
+.empty{padding:40px 0;text-align:center;color:var(--mut)}
+@media(max-width:860px){
+.sl{grid-template-columns:1fr;padding:30px 22px 84px;gap:6px}.fx{order:-1;padding-top:44px}.plate{width:190px}
+.kel{left:22px;bottom:50px}.ar{top:26%;width:38px;height:38px}.pv{left:6px}.nx{right:6px}
+.tiles,.grid{grid-template-columns:repeat(2,1fr)}.tile.big{grid-column:span 2;aspect-ratio:16/10}
+.search{order:3;flex-basis:100%;max-width:none}.top{flex-wrap:wrap;gap:10px}}
+@media(prefers-reduced-motion:reduce){.cord,.hero.flick .room{animation:none}.slides,.plate,.room,.dr{transition:none}}
+</style>
+</head>
+<body>
+<div class="demo">DEMO: preview of the new Electrical Lighting Co. site, not a live shop</div>
+<div class="ann"><span>Free standard delivery on orders over £100</span><span>UK-wide delivery</span><span>Trade enquiries welcome</span></div>
+<header>
+<div class="top">
+<a class="logo" href="#"><i></i>Electrical Lighting Co.</a>
+<form class="search" onsubmit="return false" role="search"><input type="search" id="q" placeholder="Search bulbs, downlights, switches" aria-label="Search"><button>Search</button></form>
+<div class="ic"><a href="#">Log in</a><button class="bk" id="bk">Basket (0)</button></div>
+</div>
+<nav aria-label="Main"><ul>
+<li><a href="#bulbs">Light Bulbs</a></li><li><a href="#dl">Downlights</a></li><li><a href="#out">Outdoor Lighting</a></li><li><a href="#sw">Switches &amp; Sockets</a></li><li><a href="#offers">Commercial Lighting</a></li><li><a href="#guides">Buying Guides</a></li><li><a class="of" href="#offers">Offers</a></li>
+</ul></nav>
+</header>
+
+<section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured lighting">
+<div class="room"></div>
+<button class="sw" id="swb" aria-pressed="true">Lights on</button>
+<div class="slides" id="slides"></div>
+<div class="kel"><i></i><span id="kt"></span></div>
+<div class="lc" role="group" aria-label="Preview the light">
+<label for="lum">Brightness <input type="range" id="lum" min="10" max="100" value="100"><span id="lv">100%</span></label>
+<div class="tm" id="tm">
+<button data-t="" aria-pressed="true">Auto</button>
+<button data-t="2700K" style="--c:#ffb766" aria-pressed="false"><i></i>2700K</button>
+<button data-t="3000K" style="--c:#ffd08a" aria-pressed="false"><i></i>3000K</button>
+<button data-t="4000K" style="--c:#fff4e5" aria-pressed="false"><i></i>4000K</button>
+<button data-t="6500K" style="--c:#cfe4ff" aria-pressed="false"><i></i>6500K</button>
+</div></div>
+<button class="ar pv" aria-label="Previous slide">‹</button><button class="ar nx" aria-label="Next slide">›</button>
+<div class="dots" id="dots"></div>
+</section>
+
+<div class="trust"><div><span>13 years in the lighting and electrical trade</span><span>Free delivery over £100</span><span>Trade accounts welcome</span><span>Expert advice from real electricians</span></div></div>
+
+<section class="w"><div class="hd"><h2>Shop by style</h2></div><div class="tiles" id="tiles"></div></section>
+<section class="w" id="best"><div class="hd"><h2>Best sellers</h2></div><div class="grid" id="g-best"></div></section>
+<section class="w" id="offers"><div class="hd"><h2>Latest offers</h2></div><div class="grid" id="g-offers"></div></section>
+<section class="w" id="out"><div class="hd"><h2>Outdoor flush and pendant lights</h2></div><div class="grid" id="g-out"></div></section>
+<section class="w" id="sw"><div class="hd"><h2>Hamilton Litestat sockets</h2></div><div class="grid" id="g-sw"></div></section>
+<section class="w" id="dl"><div class="hd"><h2>Fire rated downlights</h2></div><div class="grid" id="g-dl"></div></section>
+<section class="w" id="bulbs"><div class="hd"><h2>Bulbs and lamps</h2></div><div class="grid" id="g-b"></div></section>
+<section class="w" id="guides"><div class="hd"><h2>Buying guides</h2></div><div class="guides" id="g-g"></div></section>
+<section class="w"><div class="hd"><h2>Brands we stock</h2></div>
+<div class="brands"><span>Searchlight</span><span>Franklite</span><span>Endon</span><span>Astro</span><span>Dar</span><span>Eglo</span><span>Firstlight</span><span>Buster and Punch</span><span>Crompton</span><span>Ledvance</span><span>Hamilton Litestat</span><span>MK</span><span>BG</span><span>Hager</span><span>Varilight</span></div></section>
+<div class="trade"><h2>Trade customer or project lead?</h2><p>Bulk packs, commercial fittings and a real person who answers the phone. Tell us what you need.</p><a class="cta" style="--k:#ffcf7a" href="#">Make a trade enquiry</a></div>
+<footer>DEMO · © 2026 Electrical Lighting Co. Preview build. Images and prices are from the current site.</footer>
+
+<div class="ov" id="ov"></div>
+<aside class="dr" id="dr" aria-label="Basket">
+<div class="dh"><h2>Your basket</h2><button id="cl" aria-label="Close basket">×</button></div>
+<div class="fr" id="fr"></div>
+<div class="items" id="items"></div>
+<div class="df"><p><span>Subtotal</span><span id="sub">£0.00</span></p><button class="add" id="co">Go to checkout</button></div>
+</aside>
+
+<script>
+var C="https://electricallighting.co.uk/cdn/shop/";
+function F(f){return C+"files/"+f+"?width=800"}
+function Q(f){return C+"collections/"+f+"?width=800"}
+function G(f){return C+"files/"+f+"?width=600"}
+var P=[
+["ECOGUARD Fire Rated Downlight 65mm IP65 5W Dimmable",50,F("13660.jpg"),"offers"],
+["T8 Lumilux 36W 865 Daylight 120cm",8.45,F("t8_lumilux_4.png"),"offers"],
+["Trafalgar GU10 IP65 Ceiling Light, White",24.96,F("resize_e0459344-ee4d-44e7-8bda-70757ef24269.webp"),"out"],
+["Trafalgar GU10 IP65 Ceiling Light, Black",24.96,F("resize_239968fc-45a6-4b70-b598-977e73ac3fa1.webp"),"out"],
+["Genoa Outdoor Pendant, Black Silver and Leaded Glass",39.36,F("resize_ff2c9575-5313-4570-8260-4d293d2b2ab6.webp"),"out"],
+["Utah Outdoor 8Lt Pendant, Gold and Crystal",614.4,F("resize_c86cbd3e-6ccb-4b82-b6dd-4943cc3c4bc1.webp"),"out"],
+["Wood Ovo 1g 5A Unswitched Socket, White",36.65,F("WOMUS5W.jpg"),"sw"],
+["Wood Ovo 1g 5A Unswitched Socket, Black",36.65,F("WOMUS5B.jpg"),"sw"],
+["Wood Ovo 1g Non-Isolated TV 1in/1out, White",34.85,F("WOMTVW.jpg"),"sw"],
+["Wood Ovo 2g Non-Isolated TV and Sat 2in/2out, White",50.83,F("WOMTVSATW.jpg"),"sw"],
+["EFD PRO Fixed / IP Rated Fire Rated Downlight",4.8,F("952682_374692b1-0ce8-4337-849e-cfeee27c7d39.png"),"dl"],
+["Adjustable EFD PRO Fire Rated Downlight",5.09,F("952684.png"),"dl"],
+["EFD PRO Fixed IP Rated, Colour Switchable GU10",5.5,F("952682_7be2c682-ea5d-4a2d-94f3-6c2cd01d71a3.png"),"dl"],
+["Fire Rated IP Fixed Downlight GU10, White Bezel",6.6,F("952682.png"),"dl"],
+["26W PLC 4 Pin Compact Fluorescent, Cool White 840",8.5,F("plc-4-pin-compact-fluorescent-lamp-26-watt-cool-white-840-1-50x50.webp"),"b"],
+["Compact Fluorescent PLT 18W 4 Pin 840 GX24Q-2",8.5,F("plt-18w-4p_3.webp"),"b"],
+["Bell 04158 CFL 4 Pin G24q-1 13W 4000K",8.5,F("6db5f4c3-a1bf-4db5-b696-89479a65573d_500_500_1_viewport_desktop-productimage.png"),"b"],
+["Master PL-C 26W 840 Cool White, 2 Pin",8.5,F("G24D-26W_6.jpg"),"b"],
+["12V 50W MR16 Halogen Dichroic, 36 Degree, Warm White",1.8,F("12-volt-halogen-dichroic-mr16-_36-degree_-closed-front-50-watt-1-560x500.webp"),"b"],
+["SPC.T FR 25W 230V E14",3.02,F("4050300555201.png"),"b"],
+["Haloline 2000W 230V R7S",31.26,F("4050300214481.png"),"b"],
+["Haloline 1500W 240V R7S",22.25,F("4050300209937.png"),"b"],
+["Haloline 1000W 240V R7S",14.04,F("4050300209913.png"),"b"],
+["Haloline Eco 80W 240V R7S",6,F("4008321325402.png"),"b"],
+["Haloline Eco 48W 240V R7S",7.41,F("4008321977649.png"),"b"],
+["Halopin Eco 48W 230V G9",2.66,F("4008321945624.png"),"b"]];
+function im(u,a){return '<img src="'+u+'" alt="'+a.replace(/"/g,'')+'" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'ph\',textContent:this.alt}))">'}
+function money(n){return '£'+n.toFixed(2)}
+function cards(c,q){return P.map(function(p,i){return p[3]===c&&(!q||p[0].toLowerCase().indexOf(q)>-1)?'<div class="pc"><div class="im">'+im(p[2],p[0])+'</div><div class="t"><h3>'+p[0]+'</h3><div class="pr">'+money(p[1])+'</div><button class="add" data-i="'+i+'">Add to basket</button></div></div>':''}).join('')}
+function draw(q){['offers','out','sw','dl','b'].forEach(function(c){var h=cards(c,q),s=document.getElementById('g-'+c);s.innerHTML=h||'<p class="empty">No matches here.</p>'})}
+draw('');
+document.getElementById('g-best').innerHTML=[["Pendant Lights","Pendant lights for kitchen islands, dining tables, hallways and bedrooms.",Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg")],["Floor Lamps","Franklite floor and standard lamps, from decorative multi-light designs to LED.",Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg")],["Funky Filaments","Decorative LED bulbs that add character and warmth to any space.",Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg")]].map(function(c){return '<a class="pc" href="#"><div class="im">'+im(c[2],c[0])+'</div><div class="t"><h3>'+c[0]+'</h3><p style="margin:0;font-size:13.5px;color:var(--mut)">'+c[1]+'</p><span class="add" style="text-align:center">Shop the range</span></div></a>'}).join('');
+document.getElementById('q').oninput=function(){draw(this.value.trim().toLowerCase())};
+var cart={},dr=document.getElementById('dr'),ov=document.getElementById('ov');
+function open(o){dr.classList.toggle('o',o);ov.classList.toggle('o',o)}
+function render(){var ids=Object.keys(cart),tot=0,cnt=0;
+document.getElementById('items').innerHTML=ids.length?ids.map(function(i){var p=P[i],q=cart[i];tot+=p[1]*q;cnt+=q;return '<div class="it"><div class="th">'+im(p[2],p[0])+'</div><div><h3>'+p[0]+'</h3><div class="q"><button data-m="'+i+'" aria-label="Fewer">−</button><span>'+q+'</span><button data-p="'+i+'" aria-label="More">+</button></div></div><b>'+money(p[1]*q)+'</b></div>'}).join(''):'<p class="empty">Your basket is empty.</p>';
+document.getElementById('sub').textContent=money(tot);
+document.getElementById('bk').textContent='Basket ('+cnt+')';
+var l=100-tot;document.getElementById('fr').innerHTML=(tot===0?'Free standard delivery on orders over £100':l>0?'Add '+money(l)+' more for free standard delivery':'You’ve unlocked free standard delivery')+'<div class="bar"><i style="width:'+Math.min(100,tot)+'%"></i></div>'}
+document.addEventListener('click',function(e){var t=e.target;
+if(t.dataset.i!==undefined){cart[t.dataset.i]=(cart[t.dataset.i]||0)+1;render();t.textContent='Added';t.classList.add('ok');setTimeout(function(){t.textContent='Add to basket';t.classList.remove('ok')},1100)}
+if(t.dataset.p!==undefined){cart[t.dataset.p]++;render()}
+if(t.dataset.m!==undefined){if(--cart[t.dataset.m]<1)delete cart[t.dataset.m];render()}});
+document.getElementById('bk').onclick=function(){open(true)};
+document.getElementById('cl').onclick=ov.onclick=function(){open(false)};
+document.getElementById('co').onclick=function(){this.textContent=Object.keys(cart).length?'Checkout connects to Shopify in the live site':'Add something first';var b=this;setTimeout(function(){b.textContent='Go to checkout'},2200)};
+render();
+var S=[
+{k:"#ffcf7a",K:"2700K warm white",i:Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg"),h:"Illuminate Your Space in Style",d:"Discover beautiful lighting designed to transform your interiors.",b:"Shop Decorative Lighting",l:"#out"},
+{k:"#cfe9ff",K:"4000K cool white",i:Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg"),h:"Better Lighting. Greater Efficiency.",d:"Explore our extensive range of quality LED bulbs.",b:"Shop Bulbs",l:"#bulbs"},
+{k:"#ffe9b8",K:"3000K soft white",i:F("952682.png"),h:"Find the Perfect Downlight",d:"Discover quality downlights and compatible accessories.",b:"Shop Downlights",l:"#dl"},
+{k:"#e8f4ff",K:"6000K daylight",i:F("t8_lumilux_4.png"),h:"Lighting Solutions for Every Business",d:"Explore practical and efficient commercial lighting.",b:"Explore Commercial Lighting",l:"#offers"},
+{k:"#ffd9a0",K:"2700K warm white",i:Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg"),h:"Discover What’s New",d:"Explore the latest additions to our lighting collection.",b:"Shop New Arrivals",l:"#sw"},
+{k:"#ffb98a",K:"2400K amber",i:F("13660.jpg"),h:"Exceptional Lighting. Special Offers.",d:"Explore our latest deals and promotional products.",b:"Shop Offers",l:"#offers"}];
+var el=document.getElementById('slides'),dots=document.getElementById('dots'),hero=document.getElementById('hero'),kt=document.getElementById('kt'),n=0,tm;
+S.forEach(function(s,x){
+el.insertAdjacentHTML('beforeend','<article class="sl" role="group" aria-label="'+(x+1)+' of '+S.length+'"><div class="cp"><h2>'+s.h+'</h2><p>'+s.d+'</p><a class="cta" href="'+s.l+'" style="--k:'+s.k+'">'+s.b+'</a></div><div class="fx"><div class="cord"><b></b></div><div class="plate">'+im(s.i,s.h)+'</div></div></article>');
+dots.insertAdjacentHTML('beforeend','<button aria-label="Slide '+(x+1)+'"></button>')});
+function go(x,f){n=(x+S.length)%S.length;var s=S[n];el.style.transform='translateX(-'+n*100+'%)';
+var o=TM[tmp];hero.style.setProperty('--k',o?o[1]:s.k);kt.innerHTML='Colour temperature <u>'+(o?o[0]:s.K)+'</u>';
+[].forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===n)});
+if(f&&hero.classList.contains('on')){hero.classList.remove('flick');void hero.offsetWidth;hero.classList.add('flick')}}
+function play(){clearInterval(tm);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)tm=setInterval(function(){go(n+1,1)},6500)}
+document.querySelector('.pv').onclick=function(){go(n-1,1);play()};
+document.querySelector('.nx').onclick=function(){go(n+1,1);play()};
+[].forEach.call(dots.children,function(d,k){d.onclick=function(){go(k,1);play()}});
+var TM={"2700K":["2700K warm white","#ffb766"],"3000K":["3000K soft white","#ffd08a"],"4000K":["4000K cool white","#fff4e5"],"6500K":["6500K daylight","#cfe4ff"]},tmp="";
+var lum=document.getElementById('lum'),lv=document.getElementById('lv');
+lum.oninput=function(){hero.style.setProperty('--lum',this.value/100);lv.textContent=this.value+'%';if(!hero.classList.contains('on')){hero.classList.add('on');sb.textContent='Lights on';sb.setAttribute('aria-pressed',true)}};
+document.getElementById('tm').onclick=function(e){var b=e.target.closest('button');if(!b)return;tmp=b.dataset.t;
+[].forEach.call(this.children,function(x){x.setAttribute('aria-pressed',x===b)});
+if(!hero.classList.contains('on')){hero.classList.add('on');sb.textContent='Lights on';sb.setAttribute('aria-pressed',true)}
+go(n)};
+var sb=document.getElementById('swb');
+sb.onclick=function(){var o=hero.classList.toggle('on');sb.textContent=o?'Lights on':'Lights off';sb.setAttribute('aria-pressed',o)};
+var x0=null;hero.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+hero.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40){go(n+(d<0?1:-1),1);play()}x0=null});
+go(0);play();setTimeout(function(){hero.classList.add('flick','on')},500);
+var T=[["Pendant lights",Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg"),"#out",1],["Floor lamps",Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg"),"#out"],["Funky filament bulbs",Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg"),"#bulbs"],["Outdoor lights",F("resize_e0459344-ee4d-44e7-8bda-70757ef24269.webp"),"#out"],["Fire rated downlights",F("952682.png"),"#dl"],["Switches and sockets",F("WOMUS5W.jpg"),"#sw"]];
+document.getElementById('tiles').innerHTML=T.map(function(t){return '<a href="'+t[2]+'" class="tile'+(t[3]?' big':'')+'">'+im(t[1],t[0])+'<span>'+t[0]+'</span></a>'}).join('');
+var D=[["Indoor lighting","Layer your lights for a home that’s functional and cosy.","indoor-lighting-in-a-white-and-orange-living-room.png"],["Decorative lighting","Statement pieces that turn a room into a feature.","decorative-lightign-in-a-light-living-room.png"],["Outdoor lighting","IP ratings and weatherproof styles for the garden.","garden-lighting.png"],["Smart lighting","Hubs, apps and voice control, explained.","in-a-white-and-green-living-room-smart-lighting.png"],["Lamps","Choose the right lumens and styles.","led-lamps-in-a-white-and-light-blue-living-room.png"],["Downlights","Choose the right downlight for every room.","downlights-in-a-white-and-light-green-room.png"],["Switches and sockets","From USB ports to dimmers, find the right fit.","switches-and-sockets-in-a-white-and-yellow-bathroom.png"],["Cables","Which cables handle your home’s power needs.","cables-in-a-utility-room.png"],["Cable accessories","The accessories that keep cables in place.","cables-and-accessories-in-a-white-and-light-gtey-store.png"],["Fire and security","Detection and protection for your property.","fire-and-security-showroom.png"],["Ventilation and heating","Clear the steam and keep warm without blowing the budget.","ventillation-and-heating-in-a-utility-room-what-is-white-ligtht-grey-and-indigo-coour.png"],["Timers and controllers","Automate lights and heating.","times-and-controllers-in-a-garage-that-is-orange-grey-and-white.png"],["Cost saving","Ways to trim your energy bill.","piggy-bank-savings.jpg"],["Kelvin scale","Warm, neutral or daylight: pick your colour temperature.","a-white-yellow-and-grey-kelvin-scale.png"]];
+document.getElementById('g-g').innerHTML=D.map(function(g){return '<a class="g" href="#">'+im(G(g[2]),g[0])+'<div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>'}).join('');
+</script>
+</body>
+</html>
