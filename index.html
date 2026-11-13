@@ -122,6 +122,8 @@ footer{padding:26px 20px;text-align:center;font-size:13px;color:var(--mut)}
 .tiles,.grid{grid-template-columns:repeat(2,1fr)}.tile.big{grid-column:span 2;aspect-ratio:16/10}
 .search{order:3;flex-basis:100%;max-width:none}.top{flex-wrap:wrap;gap:10px}}
 @media(prefers-reduced-motion:reduce){.cord,.hero.flick .room{animation:none}.slides,.plate,.room,.dr{transition:none}}
+section[id]{scroll-margin-top:120px}
+@media(max-width:480px){.ann{display:flex;overflow-x:auto}.ann span{margin:0 10px}.logo{font-size:16px}.top{padding:10px 12px}.bk{padding:8px 11px}.sl{padding-left:44px;padding-right:44px}.cp h2{font-size:clamp(29px,9vw,42px)}.tile span{font-size:16px}.grid{gap:9px}.pc .t{padding:10px}}
 </style>
 </head>
 <body>
@@ -131,7 +133,7 @@ footer{padding:26px 20px;text-align:center;font-size:13px;color:var(--mut)}
 <div class="top">
 <a class="logo" href="#"><i></i>Electrical Lighting Co.</a>
 <form class="search" onsubmit="return false" role="search"><input type="search" id="q" placeholder="Search bulbs, downlights, switches" aria-label="Search"><button>Search</button></form>
-<div class="ic"><a href="#">Log in</a><button class="bk" id="bk">Basket (0)</button></div>
+<div class="ic"><a href="https://electricallighting.co.uk/account/login">Log in</a><button class="bk" id="bk">Basket (0)</button></div>
 </div>
 <nav aria-label="Main"><ul>
 <li><a href="#bulbs">Light Bulbs</a></li><li><a href="#dl">Downlights</a></li><li><a href="#out">Outdoor Lighting</a></li><li><a href="#sw">Switches &amp; Sockets</a></li><li><a href="#offers">Commercial Lighting</a></li><li><a href="#guides">Buying Guides</a></li><li><a class="of" href="#offers">Offers</a></li>
@@ -168,7 +170,7 @@ footer{padding:26px 20px;text-align:center;font-size:13px;color:var(--mut)}
 <section class="w" id="guides"><div class="hd"><h2>Buying guides</h2></div><div class="guides" id="g-g"></div></section>
 <section class="w"><div class="hd"><h2>Brands we stock</h2></div>
 <div class="brands"><span>Searchlight</span><span>Franklite</span><span>Endon</span><span>Astro</span><span>Dar</span><span>Eglo</span><span>Firstlight</span><span>Buster and Punch</span><span>Crompton</span><span>Ledvance</span><span>Hamilton Litestat</span><span>MK</span><span>BG</span><span>Hager</span><span>Varilight</span></div></section>
-<div class="trade"><h2>Trade customer or project lead?</h2><p>Bulk packs, commercial fittings and a real person who answers the phone. Tell us what you need.</p><a class="cta" style="--k:#ffcf7a" href="#">Make a trade enquiry</a></div>
+<div class="trade"><h2>Trade customer or project lead?</h2><p>Bulk packs, commercial fittings and a real person who answers the phone. Tell us what you need.</p><a class="cta" style="--k:#ffcf7a" href="https://electricallighting.co.uk/pages/contact">Make a trade enquiry</a></div>
 <footer>DEMO · © 2026 Electrical Lighting Co. Preview build. Images and prices are from the current site.</footer>
 
 <div class="ov" id="ov"></div>
@@ -211,15 +213,17 @@ var P=[
 ["Haloline Eco 80W 240V R7S",6,F("4008321325402.png"),"b"],
 ["Haloline Eco 48W 240V R7S",7.41,F("4008321977649.png"),"b"],
 ["Halopin Eco 48W 230V G9",2.66,F("4008321945624.png"),"b"]];
-function im(u,a){return '<img src="'+u+'" alt="'+a.replace(/"/g,'')+'" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'ph\',textContent:this.alt}))">'}
+function im(u,a){return '<img src="'+u+'" alt="'+a.replace(/"/g,'')+'" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'ph\',textContent:this.alt}))">'}
 function money(n){return '£'+n.toFixed(2)}
 function cards(c,q){return P.map(function(p,i){return p[3]===c&&(!q||p[0].toLowerCase().indexOf(q)>-1)?'<div class="pc"><div class="im">'+im(p[2],p[0])+'</div><div class="t"><h3>'+p[0]+'</h3><div class="pr">'+money(p[1])+'</div><button class="add" data-i="'+i+'">Add to basket</button></div></div>':''}).join('')}
 function draw(q){['offers','out','sw','dl','b'].forEach(function(c){var h=cards(c,q),s=document.getElementById('g-'+c);s.innerHTML=h||'<p class="empty">No matches here.</p>'})}
 draw('');
-document.getElementById('g-best').innerHTML=[["Pendant Lights","Pendant lights for kitchen islands, dining tables, hallways and bedrooms.",Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg")],["Floor Lamps","Franklite floor and standard lamps, from decorative multi-light designs to LED.",Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg")],["Funky Filaments","Decorative LED bulbs that add character and warmth to any space.",Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg")]].map(function(c){return '<a class="pc" href="#"><div class="im">'+im(c[2],c[0])+'</div><div class="t"><h3>'+c[0]+'</h3><p style="margin:0;font-size:13.5px;color:var(--mut)">'+c[1]+'</p><span class="add" style="text-align:center">Shop the range</span></div></a>'}).join('');
+document.getElementById('g-best').innerHTML=[["Pendant Lights","Pendant lights for kitchen islands, dining tables, hallways and bedrooms.",Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg")],["Floor Lamps","Franklite floor and standard lamps, from decorative multi-light designs to LED.",Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg")],["Funky Filaments","Decorative LED bulbs that add character and warmth to any space.",Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg")]].map(function(c){return '<a class="pc" href="'+(c[0]==='Funky Filaments'?'#bulbs':'#out')+'"><div class="im">'+im(c[2],c[0])+'</div><div class="t"><h3>'+c[0]+'</h3><p style="margin:0;font-size:13.5px;color:var(--mut)">'+c[1]+'</p><span class="add" style="text-align:center">Shop the range</span></div></a>'}).join('');
 document.getElementById('q').oninput=function(){draw(this.value.trim().toLowerCase())};
+document.querySelector('.search').addEventListener('submit',function(e){e.preventDefault();document.getElementById('offers').scrollIntoView()});
 var cart={},dr=document.getElementById('dr'),ov=document.getElementById('ov');
-function open(o){dr.classList.toggle('o',o);ov.classList.toggle('o',o)}
+function open(o){dr.classList.toggle('o',o);ov.classList.toggle('o',o);dr.setAttribute('aria-hidden',String(!o));document.body.style.overflow=o?'hidden':'';if(o)document.getElementById('cl').focus();else document.getElementById('bk').focus()}
+dr.setAttribute('aria-hidden','true');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&dr.classList.contains('o'))open(false)});
 function render(){var ids=Object.keys(cart),tot=0,cnt=0;
 document.getElementById('items').innerHTML=ids.length?ids.map(function(i){var p=P[i],q=cart[i];tot+=p[1]*q;cnt+=q;return '<div class="it"><div class="th">'+im(p[2],p[0])+'</div><div><h3>'+p[0]+'</h3><div class="q"><button data-m="'+i+'" aria-label="Fewer">−</button><span>'+q+'</span><button data-p="'+i+'" aria-label="More">+</button></div></div><b>'+money(p[1]*q)+'</b></div>'}).join(''):'<p class="empty">Your basket is empty.</p>';
 document.getElementById('sub').textContent=money(tot);
@@ -231,7 +235,7 @@ if(t.dataset.p!==undefined){cart[t.dataset.p]++;render()}
 if(t.dataset.m!==undefined){if(--cart[t.dataset.m]<1)delete cart[t.dataset.m];render()}});
 document.getElementById('bk').onclick=function(){open(true)};
 document.getElementById('cl').onclick=ov.onclick=function(){open(false)};
-document.getElementById('co').onclick=function(){this.textContent=Object.keys(cart).length?'Checkout connects to Shopify in the live site':'Add something first';var b=this;setTimeout(function(){b.textContent='Go to checkout'},2200)};
+document.getElementById('co').onclick=function(){this.textContent=Object.keys(cart).length?'Demo basket only — checkout unavailable':'Add something first';var b=this;setTimeout(function(){b.textContent='Go to checkout'},2200)};
 render();
 var S=[
 {k:"#ffcf7a",K:"2700K warm white",i:Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg"),h:"Illuminate Your Space in Style",d:"Discover beautiful lighting designed to transform your interiors.",b:"Shop Decorative Lighting",l:"#out"},
@@ -264,10 +268,11 @@ sb.onclick=function(){var o=hero.classList.toggle('on');sb.textContent=o?'Lights
 var x0=null;hero.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
 hero.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40){go(n+(d<0?1:-1),1);play()}x0=null});
 go(0);play();setTimeout(function(){hero.classList.add('flick','on')},500);
+document.addEventListener('visibilitychange',function(){if(document.hidden)clearInterval(tm);else play()});
 var T=[["Pendant lights",Q("Thatch_PCH438-822_fb1bd030-515f-4c4b-9e41-c42d3e79beb2.jpg"),"#out",1],["Floor lamps",Q("Brooke_SL270_737x985-450_88ff85ef-9648-46c1-99c1-74c2914337fa.jpg"),"#out"],["Funky filament bulbs",Q("21969-LED-Decorative-Lantern-106-Clear-4.9W-1800K-ES-E27-ON__83283.1767366150.jpg"),"#bulbs"],["Outdoor lights",F("resize_e0459344-ee4d-44e7-8bda-70757ef24269.webp"),"#out"],["Fire rated downlights",F("952682.png"),"#dl"],["Switches and sockets",F("WOMUS5W.jpg"),"#sw"]];
 document.getElementById('tiles').innerHTML=T.map(function(t){return '<a href="'+t[2]+'" class="tile'+(t[3]?' big':'')+'">'+im(t[1],t[0])+'<span>'+t[0]+'</span></a>'}).join('');
 var D=[["Indoor lighting","Layer your lights for a home that’s functional and cosy.","indoor-lighting-in-a-white-and-orange-living-room.png"],["Decorative lighting","Statement pieces that turn a room into a feature.","decorative-lightign-in-a-light-living-room.png"],["Outdoor lighting","IP ratings and weatherproof styles for the garden.","garden-lighting.png"],["Smart lighting","Hubs, apps and voice control, explained.","in-a-white-and-green-living-room-smart-lighting.png"],["Lamps","Choose the right lumens and styles.","led-lamps-in-a-white-and-light-blue-living-room.png"],["Downlights","Choose the right downlight for every room.","downlights-in-a-white-and-light-green-room.png"],["Switches and sockets","From USB ports to dimmers, find the right fit.","switches-and-sockets-in-a-white-and-yellow-bathroom.png"],["Cables","Which cables handle your home’s power needs.","cables-in-a-utility-room.png"],["Cable accessories","The accessories that keep cables in place.","cables-and-accessories-in-a-white-and-light-gtey-store.png"],["Fire and security","Detection and protection for your property.","fire-and-security-showroom.png"],["Ventilation and heating","Clear the steam and keep warm without blowing the budget.","ventillation-and-heating-in-a-utility-room-what-is-white-ligtht-grey-and-indigo-coour.png"],["Timers and controllers","Automate lights and heating.","times-and-controllers-in-a-garage-that-is-orange-grey-and-white.png"],["Cost saving","Ways to trim your energy bill.","piggy-bank-savings.jpg"],["Kelvin scale","Warm, neutral or daylight: pick your colour temperature.","a-white-yellow-and-grey-kelvin-scale.png"]];
-document.getElementById('g-g').innerHTML=D.map(function(g){return '<a class="g" href="#">'+im(G(g[2]),g[0])+'<div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>'}).join('');
+document.getElementById('g-g').innerHTML=D.map(function(g){return '<a class="g" href="https://electricallighting.co.uk/blogs/news">'+im(G(g[2]),g[0])+'<div><h3>'+g[0]+'</h3><p>'+g[1]+'</p></div></a>'}).join('');
 </script>
 </body>
 </html>
