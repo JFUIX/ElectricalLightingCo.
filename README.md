@@ -4,6 +4,10 @@ A responsive, single-page storefront **concept/demo** for Electrical Lighting Co
 
 > **Demo only:** This repository is a frontend preview, not the live retailer's checkout. Product information and prices are illustrative snapshots and may change. Orders cannot be placed through this demo.
 
+## Website preview
+
+![Electrical Lighting Co. responsive storefront preview](https://raw.githubusercontent.com/JFUIX/ElectricalLightingCo./main/screenshots/website-preview.png)
+
 ## Features
 
 - Responsive product-category navigation and product grids
