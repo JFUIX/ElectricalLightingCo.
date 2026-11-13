@@ -8,6 +8,10 @@ A responsive, single-page storefront **concept/demo** for Electrical Lighting Co
 
 ![Electrical Lighting Co. responsive storefront preview](https://raw.githubusercontent.com/JFUIX/ElectricalLightingCo./main/screenshots/website-preview.png)
 
+### Interactive walkthrough
+
+![Electrical Lighting Co. website interactions](https://raw.githubusercontent.com/JFUIX/ElectricalLightingCo./main/screenshots/electrical-lighting-shop-demo.gif)
+
 ## Features
 
 - Responsive product-category navigation and product grids
